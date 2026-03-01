@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Nina & Thiago - Casamento',
   description: 'Confirme sua presença no casamento de Nina e Thiago',
   keywords: ['casamento', 'RSVP', 'Nina', 'Thiago', 'confirmação de presença'],
+  icons: {
+    icon: '/icon.svg',
+  },
 }
 
 export default function RootLayout({
