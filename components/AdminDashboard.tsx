@@ -239,7 +239,7 @@ export default function AdminDashboard() {
                 <button
                   type="button"
                   onClick={handleAddGuest}
-                  className="text-gold-600 hover:text-gold-700 text-sm mt-2"
+                  className="text-beige-600 hover:text-beige-700 text-sm mt-2"
                 >
                   + Adicionar mais um convidado
                 </button>

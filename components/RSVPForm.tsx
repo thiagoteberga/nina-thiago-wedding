@@ -99,7 +99,7 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
           {guests.map((guest) => (
             <label
               key={guest.id}
-              className="flex items-center p-4 bg-beige-50 rounded-lg hover:bg-beige-100 transition-colors cursor-pointer border-2 border-transparent hover:border-gold-300"
+              className="flex items-center p-4 bg-beige-50 rounded-lg hover:bg-beige-100 transition-colors cursor-pointer border-2 border-transparent hover:border-beige-400"
             >
               <input
                 type="checkbox"

@@ -33,19 +33,19 @@ export default function Hero() {
             Celebre conosco
           </p>
           <h1 className="text-white font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-2 tracking-wide">
-            Nina <span className="text-gold-300">&</span> Thiago
+            Nina <span className="text-beige-300">&</span> Thiago
           </h1>
-          <div className="w-24 h-px bg-gold-400 mx-auto my-8" />
+          <div className="w-24 h-px bg-beige-400 mx-auto my-8" />
         </div>
 
-        <div className="text-beige-100 space-y-3 mb-12">
+        <div className="text-beige-50 space-y-3 mb-12">
           <p className="text-xl md:text-2xl font-light">
             07 de Março de 2026
           </p>
           <p className="text-lg md:text-xl font-light">
             Chácara Amata
           </p>
-          <p className="text-sm md:text-base text-beige-200 max-w-md mx-auto">
+          <p className="text-sm md:text-base text-beige-100 max-w-md mx-auto">
             Estrada Sebastião Vieira Machado, 1056<br />
             Lago Azul - Pindamonhangaba - SP
           </p>

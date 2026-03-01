@@ -14,7 +14,7 @@ export default function Home() {
             É com grande alegria que convidamos você para celebrar conosco o nosso casamento.
             Este será um momento especial em nossas vidas e queremos compartilhá-lo com as pessoas que amamos.
           </p>
-          <div className="w-24 h-px bg-gold-400 mx-auto my-12" />
+          <div className="w-24 h-px bg-beige-400 mx-auto my-12" />
         </div>
       </section>
 

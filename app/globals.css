@@ -22,7 +22,7 @@
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-beige-200;
+    @apply bg-white rounded-xl shadow-lg p-6 border border-beige-100;
   }
   
   .heading-1 {
