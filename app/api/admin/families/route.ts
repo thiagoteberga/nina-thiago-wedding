@@ -1,5 +1,5 @@
 import { Database } from '@/lib/database.types'
-import { createClient } from '@/lib/supabase'
+import { TypedSupabaseClient, createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 type Familia = Database['public']['Tables']['familias']['Row']
@@ -9,7 +9,7 @@ type ConvidadoInsert = Database['public']['Tables']['convidados']['Insert']
 
 export async function GET() {
   try {
-    const supabase = createClient()
+    const supabase: TypedSupabaseClient = createClient()
 
     // Buscar todas as famílias
     const { data: families, error: familiesError } = await supabase
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const supabase = createClient()
+    const supabase: TypedSupabaseClient = createClient()
 
     // Criar família
     const familiaData: FamiliaInsert = {
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 
     const { data: family, error: familyError } = await supabase
       .from('familias')
-      .insert(familiaData as any)
+      .insert(familiaData)
       .select()
       .single()
 
@@ -78,14 +78,14 @@ export async function POST(request: Request) {
     const guestsData: ConvidadoInsert[] = guests
       .filter((name: string) => name.trim())
       .map((name: string) => ({
-        familia_id: (family as Familia).id,
+        familia_id: family.id,
         nome: name.trim(),
         confirmado: false
       }))
 
     const { error: guestsError } = await supabase
       .from('convidados')
-      .insert(guestsData as any)
+      .insert(guestsData)
 
     if (guestsError) throw guestsError
 

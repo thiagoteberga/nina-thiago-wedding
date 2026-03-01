@@ -1,8 +1,6 @@
 import { Database } from '@/lib/database.types'
-import { createClient } from '@/lib/supabase'
+import { TypedSupabaseClient, createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
-
-type ConvidadoUpdate = Database['public']['Tables']['convidados']['Update']
 
 export async function POST(request: Request) {
   try {
@@ -15,7 +13,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const supabase = createClient()
+    const supabase: TypedSupabaseClient = createClient()
 
     // Verificar se o token existe
     const { data: family, error: familyError } = await supabase
@@ -33,11 +31,10 @@ export async function POST(request: Request) {
 
     // Atualizar cada convidado
     for (const guest of guests) {
-      // @ts-ignore - Supabase type inference issue
       const { error: updateError } = await supabase
         .from('convidados')
         .update({
-          confirmado: guest.confirmado,
+          confirmado: Boolean(guest.confirmado),
           data_confirmacao: guest.confirmado ? new Date().toISOString() : null
         })
         .eq('id', guest.id)
