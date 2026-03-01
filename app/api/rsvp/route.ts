@@ -5,11 +5,11 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   console.log('🎯 API /api/rsvp CHAMADA')
   console.log('Timestamp:', new Date().toISOString())
-  
+
   try {
     const body = await request.json()
     console.log('📥 Body recebido:', JSON.stringify(body, null, 2))
-    
+
     const { token, guests } = body
 
     if (!token || !guests || !Array.isArray(guests)) {
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const supabase = createClient()
 
     console.log('🔍 Buscando família pelo token...')
-    
+
     // Verificar se o token existe e buscar nome da família
     const { data: family, error: familyError } = await supabase
       .from('familias')
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     console.log('📝 Atualizando convidados...')
     for (const guest of guests) {
       console.log(`Atualizando ${guest.nome || guest.id}: confirmado=${guest.confirmado}`)
-      
+
       const { error: updateError } = await supabase
         .from('convidados')
         .update({
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     console.log('Família:', family.nome_familia)
     console.log('Total confirmados:', totalConfirmed)
     console.log('Convidados:', guests.map(g => ({ nome: g.nome, confirmado: g.confirmado })))
-    
+
     sendConfirmationEmail({
       familyName: family.nome_familia,
       guests: guests.map(g => ({ nome: g.nome || 'Convidado', confirmado: g.confirmado })),

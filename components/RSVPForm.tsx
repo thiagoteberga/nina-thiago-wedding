@@ -76,7 +76,7 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
 
     try {
       console.log('📡 Fazendo requisição POST para /api/rsvp...')
-      
+
       const payload = {
         token,
         guests: guests.map(g => ({
@@ -85,9 +85,9 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
           nome: g.nome
         }))
       }
-      
+
       console.log('📦 Payload:', JSON.stringify(payload, null, 2))
-      
+
       const response = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
@@ -97,7 +97,7 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
       })
 
       console.log('📬 Resposta recebida:', response.status, response.statusText)
-      
+
       const responseData = await response.json()
       console.log('📄 Dados da resposta:', responseData)
 

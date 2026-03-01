@@ -162,7 +162,7 @@ export async function sendConfirmationEmail({
         console.log('De: Casamento Nina & Thiago <onboarding@resend.dev>')
         console.log('Para:', recipientEmail)
         console.log('Assunto:', `✅ Confirmação: Família ${familyName}`)
-        
+
         const result = await resend.emails.send({
             from: 'Casamento Nina & Thiago <onboarding@resend.dev>',
             to: recipientEmail,
