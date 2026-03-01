@@ -15,7 +15,7 @@ Olá, {NOME_DA_FAMILIA}!
 Estrada Sebastião Vieira Machado, 1056
 Lago Azul - Pindamonhangaba - SP
 
-Por favor, confirme sua presença até o dia *20 de Fevereiro de 2026* através do link:
+Por favor, confirme sua presença até o dia *03 de Março de 2026* através do link:
 
 {LINK_RSVP}
 

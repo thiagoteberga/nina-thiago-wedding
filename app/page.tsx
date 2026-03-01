@@ -116,7 +116,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="heading-2 mb-6">Confirme sua Presença</h2>
           <p className="text-gray-700 text-lg mb-8">
-            Pedimos a gentileza de confirmar sua presença até o dia <strong>20 de Fevereiro de 2026</strong>.
+            Pedimos a gentileza de confirmar sua presença até o dia <strong>03 de Março de 2026</strong>.
           </p>
           <p className="text-gray-600 mb-8">
             Se você recebeu o link de confirmação, clique nele para confirmar sua presença.
