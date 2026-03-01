@@ -17,8 +17,8 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop"
-          alt="Casamento"
+          src="/images/hero-bg.jpg"
+          alt="Casamento Nina e Thiago"
           fill
           className="object-cover brightness-[0.85]"
           priority
