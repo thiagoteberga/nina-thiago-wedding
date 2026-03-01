@@ -72,7 +72,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Data</h3>
-              <p className="text-gray-600">07 de Março de 2026</p>
+              <p className="text-gray-600">07 de Março de 2026 às 11h</p>
               <p className="text-gray-500 text-sm mt-1">Sábado</p>
             </div>
 

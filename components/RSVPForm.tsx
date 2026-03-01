@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface Guest {
   id: string
@@ -119,7 +119,7 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
           Obrigado por confirmar, {familyName}! Estamos ansiosos para celebrar com vocês.
         </p>
         <p className="text-sm text-gray-500 mb-4">
-          Nos vemos no dia 07/03/2026 na Chácara Amata! 💍
+          Nos vemos no dia 07/03/2026 às 11h na Chácara Amata! 💍
         </p>
       </div>
     )
@@ -167,7 +167,7 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
     <div className="card max-w-2xl mx-auto">
       <h2 className="heading-2 mb-2 text-center">Confirme sua Presença</h2>
       <p className="text-center text-gray-600 mb-4">Família {familyName}</p>
-      
+
       {/* Aviso de prazo */}
       <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg text-center">
         <p className="text-sm text-amber-800">
