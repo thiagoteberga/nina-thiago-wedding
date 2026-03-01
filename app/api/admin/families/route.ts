@@ -72,13 +72,13 @@ export async function POST(request: Request) {
       .select()
       .single()
 
-    if (familyError) throw familyError
+    if (familyError || !family) throw familyError || new Error('Família não criada')
 
     // Criar convidados
     const guestsData: ConvidadoInsert[] = guests
       .filter((name: string) => name.trim())
       .map((name: string) => ({
-        familia_id: family.id,
+        familia_id: (family as Familia).id,
         nome: name.trim(),
         confirmado: false
       }))

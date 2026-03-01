@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase'
 import { Database } from '@/lib/database.types'
 
+type Familia = Database['public']['Tables']['familias']['Row']
 type FamiliaInsert = Database['public']['Tables']['familias']['Insert']
 type ConvidadoInsert = Database['public']['Tables']['convidados']['Insert']
 
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
         .select()
         .single()
 
-      if (familyError) {
+      if (familyError || !family) {
         console.error('Erro ao criar família:', familyError)
         continue
       }
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
       const guestsData: ConvidadoInsert[] = guestNames
         .filter((name: string) => name.trim())
         .map((name: string) => ({
-          familia_id: family.id,
+          familia_id: (family as Familia).id,
           nome: name.trim(),
           confirmado: false
         }))
