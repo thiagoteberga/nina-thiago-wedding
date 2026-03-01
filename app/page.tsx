@@ -99,7 +99,7 @@ export default function Home() {
                 Lago Azul - Pindamonhangaba - SP
               </p>
               <a
-                href="https://maps.google.com/?q=Estrada+Sebastião+Vieira+Machado+1056+Pindamonhangaba+SP"
+                href="https://maps.app.goo.gl/gCojG7WNq5jRM9Xq9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gold-600 hover:text-gold-700 text-sm mt-2 inline-block"
