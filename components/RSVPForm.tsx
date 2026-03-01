@@ -70,27 +70,46 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
     setIsSubmitting(true)
     setError(null)
 
+    console.log('🚀 INICIANDO CONFIRMAÇÃO')
+    console.log('Token:', token)
+    console.log('Convidados:', guests)
+
     try {
+      console.log('📡 Fazendo requisição POST para /api/rsvp...')
+      
+      const payload = {
+        token,
+        guests: guests.map(g => ({
+          id: g.id,
+          confirmado: g.confirmado,
+          nome: g.nome
+        }))
+      }
+      
+      console.log('📦 Payload:', JSON.stringify(payload, null, 2))
+      
       const response = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          token,
-          guests: guests.map(g => ({
-            id: g.id,
-            confirmado: g.confirmado
-          }))
-        }),
+        body: JSON.stringify(payload),
       })
 
+      console.log('📬 Resposta recebida:', response.status, response.statusText)
+      
+      const responseData = await response.json()
+      console.log('📄 Dados da resposta:', responseData)
+
       if (!response.ok) {
+        console.error('❌ Erro na resposta:', responseData)
         throw new Error('Erro ao confirmar presença')
       }
 
+      console.log('✅ Confirmação bem-sucedida!')
       setIsSuccess(true)
     } catch (err) {
+      console.error('❌ ERRO CAPTURADO:', err)
       setError('Erro ao confirmar presença. Por favor, tente novamente.')
       console.error(err)
     } finally {
