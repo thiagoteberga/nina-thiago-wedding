@@ -3,7 +3,7 @@ import { Database } from './database.types'
 
 export type TypedSupabaseClient = SupabaseClient<Database>
 
-export function createClient(): TypedSupabaseClient {
+export function createClient(): any {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 

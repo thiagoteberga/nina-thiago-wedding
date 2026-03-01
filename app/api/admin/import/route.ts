@@ -1,5 +1,5 @@
 import { Database } from '@/lib/database.types'
-import { TypedSupabaseClient, createClient } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 type Familia = Database['public']['Tables']['familias']['Row']
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const supabase: TypedSupabaseClient = createClient()
+    const supabase = createClient()
     const lines = csvData.split('\n').filter((line: string) => line.trim())
 
     for (const line of lines) {

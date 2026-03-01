@@ -1,5 +1,5 @@
 import { Database } from '@/lib/database.types'
-import { TypedSupabaseClient, createClient } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const supabase: TypedSupabaseClient = createClient()
+    const supabase = createClient()
 
     // Verificar se o token existe
     const { data: family, error: familyError } = await supabase

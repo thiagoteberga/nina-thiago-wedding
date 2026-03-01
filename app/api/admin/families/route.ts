@@ -1,5 +1,5 @@
 import { Database } from '@/lib/database.types'
-import { TypedSupabaseClient, createClient } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 type Familia = Database['public']['Tables']['familias']['Row']
@@ -9,7 +9,7 @@ type ConvidadoInsert = Database['public']['Tables']['convidados']['Insert']
 
 export async function GET() {
   try {
-    const supabase: TypedSupabaseClient = createClient()
+    const supabase = createClient()
 
     // Buscar todas as famílias
     const { data: families, error: familiesError } = await supabase
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const supabase: TypedSupabaseClient = createClient()
+    const supabase = createClient()
 
     // Criar família
     const familiaData: FamiliaInsert = {
