@@ -29,12 +29,16 @@ Abra o arquivo `.env.local` e adicione:
 RESEND_API_KEY=re_SuaAPIKeyAqui
 
 # Email que receberá as notificações
-NOTIFICATION_EMAIL=seuemail@gmail.com
+# ⚠️ IMPORTANTE: No plano gratuito/teste, use o MESMO email cadastrado na conta do Resend
+NOTIFICATION_EMAIL=seuemail@example.com
 ```
 
 **Substitua:**
 - `re_SuaAPIKeyAqui` pela sua API Key do Resend
-- `seuemail@gmail.com` pelo email que deve receber as notificações
+- `seuemail@example.com` pelo **email cadastrado na sua conta do Resend**
+
+**⚠️ Limitação do Plano Gratuito:**
+No modo teste do Resend, você só pode enviar emails para o próprio email cadastrado na conta. Para enviar para outros endereços, é necessário verificar um domínio personalizado em https://resend.com/domains
 
 ### 3. Configurar no Vercel (Produção)
 
@@ -97,7 +101,19 @@ Isso é mais que suficiente para um casamento!
 **Email não chega:**
 - Verifique se as variáveis estão corretas no `.env.local`
 - Verifique a pasta de spam
+- **⚠️ IMPORTANTE:** No plano gratuito, o email NOTIFICATION_EMAIL deve ser o mesmo cadastrado na conta do Resend
 - Verifique se esgotou o limite de emails grátis (improvável)
+- Veja os logs do console no Vercel
+
+**Erro: "You can only send testing emails to your own email":**
+- No plano gratuito do Resend, você só pode enviar para o email da conta
+- Solução: Use o mesmo email cadastrado no Resend como NOTIFICATION_EMAIL
+- OU verifique um domínio personalizado em https://resend.com/domains
+
+**Erro de API Key:**
+- Certifique-se que copiou a chave completamente
+- A chave deve começar com `re_`
+- Não pode ter espaços antes ou depois
 - Veja os logs do console no Vercel
 
 **Erro de API Key:**
