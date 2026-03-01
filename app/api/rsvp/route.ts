@@ -1,7 +1,6 @@
-import { Database } from '@/lib/database.types'
+import { sendConfirmationEmail } from '@/lib/email'
 import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
-import { sendConfirmationEmail } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {

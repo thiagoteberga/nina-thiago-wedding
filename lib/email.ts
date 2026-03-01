@@ -3,30 +3,30 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 interface SendConfirmationEmailProps {
-  familyName: string
-  guests: Array<{
-    nome: string
-    confirmado: boolean
-  }>
-  totalConfirmed: number
+    familyName: string
+    guests: Array<{
+        nome: string
+        confirmado: boolean
+    }>
+    totalConfirmed: number
 }
 
 export async function sendConfirmationEmail({
-  familyName,
-  guests,
-  totalConfirmed
+    familyName,
+    guests,
+    totalConfirmed
 }: SendConfirmationEmailProps) {
-  const recipientEmail = process.env.NOTIFICATION_EMAIL
+    const recipientEmail = process.env.NOTIFICATION_EMAIL
 
-  if (!recipientEmail || !process.env.RESEND_API_KEY) {
-    console.warn('Email de notificação não configurado')
-    return
-  }
+    if (!recipientEmail || !process.env.RESEND_API_KEY) {
+        console.warn('Email de notificação não configurado')
+        return
+    }
 
-  const confirmedGuests = guests.filter(g => g.confirmado)
-  const notConfirmedGuests = guests.filter(g => !g.confirmado)
+    const confirmedGuests = guests.filter(g => g.confirmado)
+    const notConfirmedGuests = guests.filter(g => !g.confirmado)
 
-  const emailHtml = `
+    const emailHtml = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -128,12 +128,12 @@ export async function sendConfirmationEmail({
           <div style="margin-top: 30px; text-align: center;">
             <p style="color: #666;">
               Data da confirmação: ${new Date().toLocaleDateString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-              })}
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    })}
             </p>
           </div>
         </div>
@@ -145,16 +145,16 @@ export async function sendConfirmationEmail({
     </html>
   `
 
-  try {
-    await resend.emails.send({
-      from: 'Casamento Nina & Thiago <onboarding@resend.dev>',
-      to: recipientEmail,
-      subject: `✅ Confirmação: Família ${familyName}`,
-      html: emailHtml,
-    })
+    try {
+        await resend.emails.send({
+            from: 'Casamento Nina & Thiago <onboarding@resend.dev>',
+            to: recipientEmail,
+            subject: `✅ Confirmação: Família ${familyName}`,
+            html: emailHtml,
+        })
 
-    console.log(`Email enviado para ${recipientEmail} - Família ${familyName}`)
-  } catch (error) {
-    console.error('Erro ao enviar email:', error)
-  }
+        console.log(`Email enviado para ${recipientEmail} - Família ${familyName}`)
+    } catch (error) {
+        console.error('Erro ao enviar email:', error)
+    }
 }

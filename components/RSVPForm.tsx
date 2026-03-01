@@ -23,6 +23,11 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
   const [countdown, setCountdown] = useState(5)
   const router = useRouter()
 
+  // Sincronizar estado com dados do servidor quando mudar
+  useEffect(() => {
+    setGuests(initialGuests)
+  }, [initialGuests])
+
   // Verificar se está dentro do prazo (até 04/03/2026 23:59:59)
   const deadline = new Date('2026-03-04T23:59:59')
   const now = new Date()
