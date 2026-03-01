@@ -1,6 +1,6 @@
-import { notFound } from 'next/navigation'
 import RSVPForm from '@/components/RSVPForm'
 import { createClient } from '@/lib/supabase'
+import { notFound } from 'next/navigation'
 
 interface PageProps {
   params: {

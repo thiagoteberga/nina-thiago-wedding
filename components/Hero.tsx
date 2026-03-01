@@ -27,9 +27,8 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className={`relative z-10 text-center px-4 transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
+      <div className={`relative z-10 text-center px-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
         <div className="mb-8">
           <p className="text-beige-100 text-lg md:text-xl mb-4 font-light tracking-widest uppercase">
             Celebre conosco
