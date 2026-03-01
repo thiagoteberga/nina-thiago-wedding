@@ -33,20 +33,14 @@ export async function POST(request: Request) {
 
     // Atualizar cada convidado
     for (const guest of guests) {
-      const updateData: ConvidadoUpdate = {
-        confirmado: guest.confirmado
-      }
-
-      // Se estiver confirmando, adicionar data
-      if (guest.confirmado) {
-        updateData.data_confirmacao = new Date().toISOString()
-      } else {
-        updateData.data_confirmacao = null
+      const updateData: any = {
+        confirmado: guest.confirmado,
+        data_confirmacao: guest.confirmado ? new Date().toISOString() : null
       }
 
       const { error: updateError } = await supabase
         .from('convidados')
-        .update(updateData as any)
+        .update(updateData)
         .eq('id', guest.id)
         .eq('familia_id', family.id)
 
