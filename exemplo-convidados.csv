@@ -1,0 +1,13 @@
+# Exemplo de CSV para Importação de Convidados
+# Formato: nome_familia,telefone,convidado1,convidado2,convidado3,...
+
+Família Silva,11999999999,João Silva,Maria Silva,Pedro Silva
+Família Santos,11988888888,Ana Santos,Carlos Santos
+Família Oliveira,11977777777,Roberto Oliveira,Fernanda Oliveira,Lucas Oliveira,Julia Oliveira
+Família Costa,11966666666,Marcelo Costa,Patricia Costa
+Família Almeida,,Ricardo Almeida,Beatriz Almeida,Gabriel Almeida
+Família Rodrigues,11955555555,Paulo Rodrigues,Carla Rodrigues,Amanda Rodrigues
+Família Ferreira,11944444444,Eduardo Ferreira,Juliana Ferreira
+Família Pereira,11933333333,Gustavo Pereira,Mariana Pereira,Felipe Pereira
+Família Lima,11922222222,Bruno Lima,Carolina Lima
+Família Gomes,11911111111,Diego Gomes,Camila Gomes,Enzo Gomes,Sofia Gomes
