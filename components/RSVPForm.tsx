@@ -23,6 +23,11 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
   const [countdown, setCountdown] = useState(5)
   const router = useRouter()
 
+  // Verificar se está dentro do prazo (até 04/03/2026 23:59:59)
+  const deadline = new Date('2026-03-04T23:59:59')
+  const now = new Date()
+  const isExpired = now > deadline
+
   const handleToggle = (guestId: string) => {
     setGuests(guests.map(guest =>
       guest.id === guestId ? { ...guest, confirmado: !guest.confirmado } : guest
@@ -74,20 +79,40 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
   }
 
   if (isSuccess) {
+    const radius = 50
+    const circumference = 2 * Math.PI * radius
+    const progress = ((5 - countdown) / 5) * circumference
+
     return (
       <div className="card max-w-2xl mx-auto text-center py-12">
-        <div className="mb-6">
-          <svg
-            className="w-20 h-20 text-green-500 mx-auto"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
+        <div className="mb-6 flex justify-center">
+          <div className="relative w-32 h-32">
+            <svg className="transform -rotate-90 w-32 h-32">
+              <circle
+                cx="64"
+                cy="64"
+                r={radius}
+                stroke="#e5e7eb"
+                strokeWidth="8"
+                fill="none"
+              />
+              <circle
+                cx="64"
+                cy="64"
+                r={radius}
+                stroke="#10b981"
+                strokeWidth="8"
+                fill="none"
+                strokeDasharray={circumference}
+                strokeDashoffset={circumference - progress}
+                strokeLinecap="round"
+                className="transition-all duration-1000"
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-4xl font-bold text-green-600">{countdown}</span>
+            </div>
+          </div>
         </div>
         <h2 className="heading-2 mb-4">Presença Confirmada!</h2>
         <p className="text-gray-600 text-lg mb-8">
@@ -96,9 +121,44 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
         <p className="text-sm text-gray-500 mb-4">
           Nos vemos no dia 07/03/2026 na Chácara Amata! 💍
         </p>
-        <p className="text-xs text-gray-400 mt-6">
-          Redirecionando em {countdown} segundo{countdown !== 1 ? 's' : ''}...
+      </div>
+    )
+  }
+
+  // Se o prazo expirou, mostrar mensagem
+  if (isExpired) {
+    return (
+      <div className="card max-w-2xl mx-auto text-center py-12">
+        <div className="mb-6">
+          <svg
+            className="w-20 h-20 text-amber-500 mx-auto"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h2 className="heading-2 mb-4">Prazo Expirado</h2>
+        <p className="text-gray-600 text-lg mb-6">
+          O prazo para confirmação de presença encerrou em 04/03/2026.
         </p>
+        <p className="text-gray-700 mb-8">
+          Para confirmar sua presença ou fazer alterações, por favor entre em contato diretamente com os noivos.
+        </p>
+        <div className="space-y-2 text-sm text-gray-600">
+          <p>💍 Nina & Thiago</p>
+          <p>📱 WhatsApp ou telefone dos noivos</p>
+        </div>
+        <button
+          onClick={() => router.push('/')}
+          className="btn-secondary mt-8"
+        >
+          Voltar para o site
+        </button>
       </div>
     )
   }
@@ -106,7 +166,17 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
   return (
     <div className="card max-w-2xl mx-auto">
       <h2 className="heading-2 mb-2 text-center">Confirme sua Presença</h2>
-      <p className="text-center text-gray-600 mb-8">Família {familyName}</p>
+      <p className="text-center text-gray-600 mb-4">Família {familyName}</p>
+      
+      {/* Aviso de prazo */}
+      <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg text-center">
+        <p className="text-sm text-amber-800">
+          ⏰ <strong>Prazo para confirmação:</strong> até 04/03/2026
+        </p>
+        <p className="text-xs text-amber-600 mt-1">
+          Você pode alterar sua confirmação até essa data
+        </p>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="space-y-4 mb-8">

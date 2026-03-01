@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import Countdown from './Countdown'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
+  const weddingDate = new Date('2026-03-07T18:00:00')
 
   useEffect(() => {
     setIsVisible(true)
@@ -49,6 +51,14 @@ export default function Hero() {
             Estrada Sebastião Vieira Machado, 1056<br />
             Lago Azul - Pindamonhangaba - SP
           </p>
+        </div>
+
+        {/* Countdown */}
+        <div className="mb-12">
+          <p className="text-beige-100 text-sm md:text-base mb-6 font-light tracking-wide uppercase">
+            Faltam
+          </p>
+          <Countdown targetDate={weddingDate} />
         </div>
 
         <a
