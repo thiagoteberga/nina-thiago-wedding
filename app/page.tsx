@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="relative h-80 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <Image
-                src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop"
+                src="/images/foto-1.jpg"
                 alt="Momento 1"
                 fill
                 className="object-cover"
@@ -33,7 +33,7 @@ export default function Home() {
             </div>
             <div className="relative h-80 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <Image
-                src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=2071&auto=format&fit=crop"
+                src="/images/foto-2.jpg"
                 alt="Momento 2"
                 fill
                 className="object-cover"
@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             <div className="relative h-80 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <Image
-                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2087&auto=format&fit=crop"
+                src="/images/foto-3.jpg"
                 alt="Momento 3"
                 fill
                 className="object-cover"
