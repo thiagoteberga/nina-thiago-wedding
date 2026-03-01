@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase'
+import { Database } from '@/lib/database.types'
+
+type FamiliaInsert = Database['public']['Tables']['familias']['Insert']
+type ConvidadoInsert = Database['public']['Tables']['convidados']['Insert']
 
 export async function POST(request: Request) {
   try {
@@ -25,12 +29,14 @@ export async function POST(request: Request) {
       if (!nome_familia || guestNames.length === 0) continue
 
       // Criar família
+      const familiaData: FamiliaInsert = {
+        nome_familia,
+        telefone: telefone || null,
+      }
+
       const { data: family, error: familyError } = await supabase
         .from('familias')
-        .insert({
-          nome_familia,
-          telefone: telefone || null,
-        })
+        .insert(familiaData as any)
         .select()
         .single()
 
@@ -40,7 +46,7 @@ export async function POST(request: Request) {
       }
 
       // Criar convidados
-      const guestsData = guestNames
+      const guestsData: ConvidadoInsert[] = guestNames
         .filter((name: string) => name.trim())
         .map((name: string) => ({
           familia_id: family.id,
@@ -50,7 +56,7 @@ export async function POST(request: Request) {
 
       const { error: guestsError } = await supabase
         .from('convidados')
-        .insert(guestsData)
+        .insert(guestsData as any)
 
       if (guestsError) {
         console.error('Erro ao criar convidados:', guestsError)

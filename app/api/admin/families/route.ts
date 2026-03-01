@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 
     const { data: family, error: familyError } = await supabase
       .from('familias')
-      .insert(familiaData)
+      .insert(familiaData as any)
       .select()
       .single()
 
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
 
     const { error: guestsError } = await supabase
       .from('convidados')
-      .insert(guestsData)
+      .insert(guestsData as any)
 
     if (guestsError) throw guestsError
 

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase'
+import { Database } from '@/lib/database.types'
+
+type ConvidadoUpdate = Database['public']['Tables']['convidados']['Update']
 
 export async function POST(request: Request) {
   try {
@@ -30,7 +33,7 @@ export async function POST(request: Request) {
 
     // Atualizar cada convidado
     for (const guest of guests) {
-      const updateData: any = {
+      const updateData: ConvidadoUpdate = {
         confirmado: guest.confirmado
       }
 
@@ -43,7 +46,7 @@ export async function POST(request: Request) {
 
       const { error: updateError } = await supabase
         .from('convidados')
-        .update(updateData)
+        .update(updateData as any)
         .eq('id', guest.id)
         .eq('familia_id', family.id)
 
