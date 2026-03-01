@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Lavonia';
+  src: url('/fonts/EDLavonia-Regular.ttf') format('truetype'),
+       url('/fonts/EDLavonia-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,14 +35,14 @@
   }
   
   .heading-1 {
-    @apply font-serif text-4xl md:text-6xl lg:text-7xl font-light text-gray-900 tracking-wide;
+    @apply font-lavonia text-4xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-wide;
   }
-  
+
   .heading-2 {
-    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-light text-gray-800;
+    @apply font-alice text-3xl md:text-4xl lg:text-5xl font-light text-gray-800;
   }
-  
+
   .heading-3 {
-    @apply font-serif text-2xl md:text-3xl font-light text-gray-800;
+    @apply font-alice text-2xl md:text-3xl font-light text-gray-800;
   }
 }

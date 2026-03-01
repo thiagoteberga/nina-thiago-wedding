@@ -34,6 +34,8 @@ module.exports = {
         },
       },
       fontFamily: {
+        'lavonia': ['Lavonia', 'cursive'],
+        'alice': ['var(--font-alice)', 'serif'],
         serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },

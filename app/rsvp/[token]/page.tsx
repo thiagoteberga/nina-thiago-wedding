@@ -39,7 +39,7 @@ export default async function RSVPPage({ params }: PageProps) {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <h1 className="font-serif text-3xl md:text-4xl text-center text-gray-900">
+          <h1 className="font-lavonia text-4xl md:text-5xl text-center text-gray-900">
             Nina <span className="text-gold-600">&</span> Thiago
           </h1>
           <p className="text-center text-gray-600 text-sm mt-2">07 de Março de 2026</p>

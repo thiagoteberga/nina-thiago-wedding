@@ -34,7 +34,7 @@ export default function Hero() {
           <p className="text-beige-100 text-lg md:text-xl mb-4 font-light tracking-widest uppercase">
             Celebre conosco
           </p>
-          <h1 className="text-white font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-2 tracking-wide">
+          <h1 className="text-white font-lavonia text-5xl md:text-7xl lg:text-8xl font-normal mb-2 tracking-wide">
             Nina <span className="text-beige-300">&</span> Thiago
           </h1>
           <div className="w-24 h-px bg-beige-400 mx-auto my-8" />

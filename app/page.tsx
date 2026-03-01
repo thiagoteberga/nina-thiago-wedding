@@ -137,7 +137,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-beige-100 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-2xl font-serif mb-4">Nina & Thiago</p>
+          <p className="text-2xl font-lavonia mb-4">Nina & Thiago</p>
           <p className="text-sm text-beige-300">07.03.2026</p>
           <div className="w-16 h-px bg-gold-400 mx-auto my-6" />
           <p className="text-xs text-beige-400">
