@@ -3,7 +3,9 @@ import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 type Familia = Database['public']['Tables']['familias']['Row']
+type FamiliaInsert = Database['public']['Tables']['familias']['Insert']
 type Convidado = Database['public']['Tables']['convidados']['Row']
+type ConvidadoInsert = Database['public']['Tables']['convidados']['Insert']
 
 export async function GET() {
   try {
@@ -59,19 +61,21 @@ export async function POST(request: Request) {
     const supabase = createClient()
 
     // Criar família
+    const familiaData: FamiliaInsert = {
+      nome_familia,
+      telefone: telefone || null,
+    }
+
     const { data: family, error: familyError } = await supabase
       .from('familias')
-      .insert({
-        nome_familia,
-        telefone: telefone || null,
-      })
+      .insert(familiaData)
       .select()
       .single()
 
     if (familyError) throw familyError
 
     // Criar convidados
-    const guestsData = guests
+    const guestsData: ConvidadoInsert[] = guests
       .filter((name: string) => name.trim())
       .map((name: string) => ({
         familia_id: family.id,
