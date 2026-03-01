@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Guest {
   id: string
@@ -309,13 +309,12 @@ export default function AdminDashboard() {
                     )}
                   </div>
                   <div className="text-right">
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-                      confirmedCount === totalCount
+                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${confirmedCount === totalCount
                         ? 'bg-green-100 text-green-800'
                         : confirmedCount > 0
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-gray-100 text-gray-800'
-                    }`}>
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}>
                       {confirmedCount}/{totalCount} confirmados
                     </span>
                   </div>

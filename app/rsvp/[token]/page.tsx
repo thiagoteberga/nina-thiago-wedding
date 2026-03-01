@@ -2,6 +2,10 @@ import RSVPForm from '@/components/RSVPForm'
 import { createClient } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 
+// Forçar revalidação a cada requisição (sem cache)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 interface PageProps {
   params: {
     token: string
@@ -33,6 +37,15 @@ export default async function RSVPPage({ params }: PageProps) {
   if (guestsError || !guests) {
     notFound()
   }
+
+  // Log para debug
+  console.log(`Família: ${family.nome_familia}`)
+  console.log(`Convidados encontrados: ${guests.length}`)
+  console.log('Dados:', JSON.stringify(guests.map((g: any) => ({
+    id: g.id,
+    nome: g.nome,
+    confirmado: g.confirmado
+  })), null, 2))
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-beige-100 to-beige-200">

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import AdminDashboard from '@/components/AdminDashboard'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export default function AdminPage() {
   const [password, setPassword] = useState('')

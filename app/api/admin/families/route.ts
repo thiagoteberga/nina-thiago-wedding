@@ -2,6 +2,10 @@ import { Database } from '@/lib/database.types'
 import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
+// Desabilitar cache nas respostas da API
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 type Familia = Database['public']['Tables']['familias']['Row']
 type FamiliaInsert = Database['public']['Tables']['familias']['Insert']
 type Convidado = Database['public']['Tables']['convidados']['Row']

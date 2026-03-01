@@ -16,16 +16,31 @@ interface RSVPFormProps {
 }
 
 export default function RSVPForm({ familyName, guests: initialGuests, token }: RSVPFormProps) {
-  const [guests, setGuests] = useState<Guest[]>(initialGuests)
+  // Remover duplicatas por ID (proteção contra dados duplicados)
+  const uniqueGuests = Array.from(
+    new Map(initialGuests.map(guest => [guest.id, guest])).values()
+  )
+
+  const [guests, setGuests] = useState<Guest[]>(uniqueGuests)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [countdown, setCountdown] = useState(5)
   const router = useRouter()
 
+  // Log para debug (remover depois se necessário)
+  useEffect(() => {
+    console.log('Convidados recebidos:', initialGuests.length)
+    console.log('Convidados únicos:', uniqueGuests.length)
+    console.log('Dados:', uniqueGuests)
+  }, [])
+
   // Sincronizar estado com dados do servidor quando mudar
   useEffect(() => {
-    setGuests(initialGuests)
+    const unique = Array.from(
+      new Map(initialGuests.map(guest => [guest.id, guest])).values()
+    )
+    setGuests(unique)
   }, [initialGuests])
 
   // Verificar se está dentro do prazo (até 04/03/2026 23:59:59)
