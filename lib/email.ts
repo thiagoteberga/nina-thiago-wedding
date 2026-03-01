@@ -17,9 +17,21 @@ export async function sendConfirmationEmail({
     totalConfirmed
 }: SendConfirmationEmailProps) {
     const recipientEmail = process.env.NOTIFICATION_EMAIL
+    const apiKey = process.env.RESEND_API_KEY
 
-    if (!recipientEmail || !process.env.RESEND_API_KEY) {
-        console.warn('Email de notificação não configurado')
+    // Log detalhado para debug
+    console.log('=== DEBUG EMAIL ===')
+    console.log('RESEND_API_KEY definida:', !!apiKey)
+    console.log('RESEND_API_KEY primeiros chars:', apiKey?.substring(0, 10) || 'undefined')
+    console.log('NOTIFICATION_EMAIL:', recipientEmail || 'undefined')
+    console.log('Família:', familyName)
+    console.log('Total confirmados:', totalConfirmed)
+    console.log('==================')
+
+    if (!recipientEmail || !apiKey) {
+        console.error('❌ Email de notificação não configurado')
+        console.error('recipientEmail:', recipientEmail)
+        console.error('apiKey:', apiKey ? 'definida' : 'undefined')
         return
     }
 
@@ -146,15 +158,29 @@ export async function sendConfirmationEmail({
   `
 
     try {
-        await resend.emails.send({
+        console.log('📧 Tentando enviar email...')
+        console.log('De: Casamento Nina & Thiago <onboarding@resend.dev>')
+        console.log('Para:', recipientEmail)
+        console.log('Assunto:', `✅ Confirmação: Família ${familyName}`)
+        
+        const result = await resend.emails.send({
             from: 'Casamento Nina & Thiago <onboarding@resend.dev>',
             to: recipientEmail,
             subject: `✅ Confirmação: Família ${familyName}`,
             html: emailHtml,
         })
 
+        console.log('✅ Email enviado com sucesso!')
+        console.log('Resultado:', result)
         console.log(`Email enviado para ${recipientEmail} - Família ${familyName}`)
     } catch (error) {
-        console.error('Erro ao enviar email:', error)
+        console.error('❌ ERRO ao enviar email:')
+        console.error('Tipo do erro:', typeof error)
+        console.error('Erro completo:', error)
+        if (error instanceof Error) {
+            console.error('Mensagem:', error.message)
+            console.error('Stack:', error.stack)
+        }
+        throw error
     }
 }

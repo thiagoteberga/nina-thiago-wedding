@@ -48,12 +48,17 @@ export async function POST(request: Request) {
 
     // Enviar email de notificação (não bloqueia a resposta)
     const totalConfirmed = guests.filter(g => g.confirmado).length
+    console.log('🔔 Iniciando envio de email de notificação...')
+    console.log('Família:', family.nome_familia)
+    console.log('Total confirmados:', totalConfirmed)
+    console.log('Convidados:', guests.map(g => ({ nome: g.nome, confirmado: g.confirmado })))
+    
     sendConfirmationEmail({
       familyName: family.nome_familia,
       guests: guests.map(g => ({ nome: g.nome || 'Convidado', confirmado: g.confirmado })),
       totalConfirmed
     }).catch(err => {
-      console.error('Erro ao enviar email (não crítico):', err)
+      console.error('❌ Erro ao enviar email (não crítico):', err)
     })
 
     return NextResponse.json({ success: true })
