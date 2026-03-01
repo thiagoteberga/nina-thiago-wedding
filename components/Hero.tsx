@@ -42,7 +42,7 @@ export default function Hero() {
 
         <div className="text-beige-50 space-y-3 mb-12">
           <p className="text-xl md:text-2xl font-light">
-            07 de Março de 2026
+            07 de Março de 2026 às 11h
           </p>
           <p className="text-lg md:text-xl font-light">
             Chácara Amata
