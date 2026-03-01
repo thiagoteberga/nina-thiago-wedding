@@ -141,7 +141,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-beige-50 py-12 px-4">
+    <div className="min-h-screen bg-beige-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="heading-1 text-center mb-2">Painel Administrativo</h1>
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="card text-center">
             <p className="text-gray-600 mb-2">Total de Famílias</p>
-            <p className="text-4xl font-bold text-gold-600">{families.length}</p>
+            <p className="text-4xl font-bold text-gold-500">{families.length}</p>
           </div>
           <div className="card text-center">
             <p className="text-gray-600 mb-2">Confirmados</p>
@@ -326,7 +326,7 @@ export default function AdminDashboard() {
                     {family.guests.map((guest) => (
                       <div
                         key={guest.id}
-                        className="flex items-center justify-between p-3 bg-beige-50 rounded-lg"
+                        className="flex items-center justify-between p-3 bg-beige-200 rounded-lg"
                       >
                         <span className="text-gray-800">{guest.nome}</span>
                         <div className="flex items-center gap-4">

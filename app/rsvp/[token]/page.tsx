@@ -35,12 +35,12 @@ export default async function RSVPPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-beige-50 to-beige-100">
+    <div className="min-h-screen bg-gradient-to-b from-beige-100 to-beige-200">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-beige-50 shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <h1 className="font-lavonia text-4xl md:text-5xl text-center text-gray-900">
-            Nina <span className="text-gold-600">&</span> Thiago
+            Nina <span className="text-gold-500">&</span> Thiago
           </h1>
           <p className="text-center text-gray-600 text-sm mt-2">07 de Março de 2026</p>
         </div>

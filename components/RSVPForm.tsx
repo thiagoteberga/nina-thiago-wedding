@@ -191,13 +191,13 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
           {guests.map((guest) => (
             <label
               key={guest.id}
-              className="flex items-center p-4 bg-beige-50 rounded-lg hover:bg-beige-100 transition-colors cursor-pointer border-2 border-transparent hover:border-beige-400"
+              className="flex items-center p-4 bg-beige-100 rounded-lg hover:bg-beige-200 transition-colors cursor-pointer border-2 border-transparent hover:border-beige-400"
             >
               <input
                 type="checkbox"
                 checked={guest.confirmado}
                 onChange={() => handleToggle(guest.id)}
-                className="w-5 h-5 text-gold-600 border-gray-300 rounded focus:ring-gold-500 focus:ring-2"
+                className="w-5 h-5 text-gold-500 border-gray-300 rounded focus:ring-gold-500 focus:ring-2"
               />
               <span className="ml-3 text-lg text-gray-800">{guest.nome}</span>
             </label>

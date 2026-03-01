@@ -70,7 +70,7 @@ export default function AdminPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <a href="/" className="text-gold-600 hover:text-gold-700 text-sm">
+            <a href="/" className="text-gold-500 hover:text-gold-600 text-sm">
               ← Voltar para a página inicial
             </a>
           </div>

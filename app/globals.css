@@ -17,13 +17,13 @@
   }
   
   body {
-    @apply bg-beige-50 text-gray-800;
+    @apply bg-beige-100 text-gray-800;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gold-600 hover:bg-gold-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply bg-gold-500 hover:bg-gold-600 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg;
   }
   
   .btn-secondary {
@@ -31,7 +31,7 @@
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-beige-100;
+    @apply bg-beige-50 rounded-xl shadow-lg p-6 border border-beige-200;
   }
   
   .heading-1 {

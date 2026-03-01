@@ -19,7 +19,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-beige-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="heading-2 text-center mb-12">Momentos Especiais</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -58,7 +58,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Date */}
             <div className="card text-center">
-              <div className="text-gold-600 mb-4">
+              <div className="text-gold-500 mb-4">
                 <svg
                   className="w-12 h-12 mx-auto"
                   fill="none"
@@ -78,7 +78,7 @@ export default function Home() {
 
             {/* Location */}
             <div className="card text-center">
-              <div className="text-gold-600 mb-4">
+              <div className="text-gold-500 mb-4">
                 <svg
                   className="w-12 h-12 mx-auto"
                   fill="none"
@@ -102,7 +102,7 @@ export default function Home() {
                 href="https://maps.app.goo.gl/gCojG7WNq5jRM9Xq9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold-600 hover:text-gold-700 text-sm mt-2 inline-block"
+                className="text-gold-500 hover:text-gold-600 text-sm mt-2 inline-block"
               >
                 Ver no mapa →
               </a>
@@ -123,7 +123,7 @@ export default function Home() {
             <br />
             Caso não tenha recebido, entre em contato conosco.
           </p>
-          <div className="card bg-white/80">
+          <div className="card">
             <p className="text-sm text-gray-600 mb-4">
               💍 Para confirmar, utilize o link personalizado que você recebeu via WhatsApp ou SMS.
             </p>
