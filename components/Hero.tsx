@@ -6,7 +6,7 @@ import Countdown from './Countdown'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
-  const weddingDate = new Date('2026-03-07T18:00:00')
+  const weddingDate = new Date('2026-03-07T11:00:00')
 
   useEffect(() => {
     setIsVisible(true)
