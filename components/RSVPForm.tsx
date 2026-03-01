@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface Guest {
   id: string
@@ -19,12 +20,25 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [countdown, setCountdown] = useState(5)
+  const router = useRouter()
 
   const handleToggle = (guestId: string) => {
     setGuests(guests.map(guest =>
       guest.id === guestId ? { ...guest, confirmado: !guest.confirmado } : guest
     ))
   }
+
+  useEffect(() => {
+    if (isSuccess && countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+      return () => clearTimeout(timer)
+    } else if (isSuccess && countdown === 0) {
+      router.push('/')
+    }
+  }, [isSuccess, countdown, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -79,8 +93,11 @@ export default function RSVPForm({ familyName, guests: initialGuests, token }: R
         <p className="text-gray-600 text-lg mb-8">
           Obrigado por confirmar, {familyName}! Estamos ansiosos para celebrar com vocês.
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 mb-4">
           Nos vemos no dia 07/03/2026 na Chácara Amata! 💍
+        </p>
+        <p className="text-xs text-gray-400 mt-6">
+          Redirecionando em {countdown} segundo{countdown !== 1 ? 's' : ''}...
         </p>
       </div>
     )
