@@ -33,14 +33,12 @@ export async function POST(request: Request) {
 
     // Atualizar cada convidado
     for (const guest of guests) {
-      const updateData: any = {
-        confirmado: guest.confirmado,
-        data_confirmacao: guest.confirmado ? new Date().toISOString() : null
-      }
-
       const { error: updateError } = await supabase
         .from('convidados')
-        .update(updateData)
+        .update({
+          confirmado: guest.confirmado,
+          data_confirmacao: guest.confirmado ? new Date().toISOString() : null
+        } as any)
         .eq('id', guest.id)
         .eq('familia_id', family.id)
 
