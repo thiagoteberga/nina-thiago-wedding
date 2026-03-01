@@ -1,5 +1,9 @@
-import { NextResponse } from 'next/server'
+import { Database } from '@/lib/database.types'
 import { createClient } from '@/lib/supabase'
+import { NextResponse } from 'next/server'
+
+type Familia = Database['public']['Tables']['familias']['Row']
+type Convidado = Database['public']['Tables']['convidados']['Row']
 
 export async function GET() {
   try {
@@ -15,7 +19,7 @@ export async function GET() {
 
     // Para cada família, buscar os convidados
     const familiesWithGuests = await Promise.all(
-      (families || []).map(async (family) => {
+      ((families || []) as Familia[]).map(async (family) => {
         const { data: guests, error: guestsError } = await supabase
           .from('convidados')
           .select('*')
