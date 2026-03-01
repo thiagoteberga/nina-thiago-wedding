@@ -1,6 +1,7 @@
 import { Database } from '@/lib/database.types'
 import { createClient } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
+import { sendConfirmationEmail } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
@@ -15,10 +16,10 @@ export async function POST(request: Request) {
 
     const supabase = createClient()
 
-    // Verificar se o token existe
+    // Verificar se o token existe e buscar nome da família
     const { data: family, error: familyError } = await supabase
       .from('familias')
-      .select('id')
+      .select('id, nome_familia')
       .eq('token_unico', token)
       .single()
 
@@ -45,6 +46,16 @@ export async function POST(request: Request) {
         throw updateError
       }
     }
+
+    // Enviar email de notificação (não bloqueia a resposta)
+    const totalConfirmed = guests.filter(g => g.confirmado).length
+    sendConfirmationEmail({
+      familyName: family.nome_familia,
+      guests: guests.map(g => ({ nome: g.nome || 'Convidado', confirmado: g.confirmado })),
+      totalConfirmed
+    }).catch(err => {
+      console.error('Erro ao enviar email (não crítico):', err)
+    })
 
     return NextResponse.json({ success: true })
   } catch (error) {
