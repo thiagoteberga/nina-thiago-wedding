@@ -111,6 +111,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gifts Section */}
+      <section className="py-20 px-4 bg-beige-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="heading-2 mb-8">Presentear o Casal</h2>
+          <div className="max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              A sua presença no nosso casamento é o que realmente importa para nós.
+              Ter você celebrando esse momento ao nosso lado já é o maior presente que poderíamos receber.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed mb-12">
+              Se, ainda assim, você quiser nos presentear de alguma forma, disponibilizamos a opção de contribuição via PIX.
+              Mas fique totalmente à vontade — isso é apenas para quem desejar.
+            </p>
+
+            <div className="card max-w-md mx-auto">
+              <h3 className="text-xl font-semibold mb-6 text-gray-800">Chave PIX</h3>
+              <div className="space-y-4 text-left">
+                <div>
+                  <p className="text-sm text-gray-600 mb-1">Chave:</p>
+                  <p className="text-lg font-medium text-gray-800">teberga@gmail.com</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600 mb-1">Nome:</p>
+                  <p className="text-lg font-medium text-gray-800">Thiago Oliveira Teberga</p>
+                </div>
+              </div>
+
+              <div className="w-full h-px bg-beige-200 my-8" />
+
+              <p className="text-sm text-gray-600 mb-4">Se preferir, você também pode usar o QR Code abaixo:</p>
+              <div className="relative w-64 h-64 mx-auto bg-white rounded-lg shadow-inner p-4">
+                <Image
+                  src="/images/qr-code.png"
+                  alt="QR Code PIX"
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* RSVP Section */}
       <section id="rsvp" className="py-20 px-4 bg-gradient-to-b from-beige-100 to-gold-50">
         <div className="max-w-2xl mx-auto text-center">

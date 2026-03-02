@@ -62,7 +62,7 @@ export default function Hero() {
 
         <a
           href="#rsvp"
-          className="inline-block btn-primary text-lg animate-pulse hover:animate-none"
+          className="inline-block btn-primary text-lg animate-pulse hover:animate-none relative z-20"
         >
           Confirmar Presença
         </a>
